@@ -55,7 +55,7 @@ int main()
 		cin >> to;
 		pages.insert(from, to);
 	}
-
+	pages.print();
 
 	return 0;
 }
