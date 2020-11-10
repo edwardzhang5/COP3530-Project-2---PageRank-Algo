@@ -49,6 +49,8 @@ public:
 
 		// Iterates based on the number of desired power iterations
 		for (int i = 1; i < p; i++) {
+
+			// Stores all values in temporary map; prevents matrix from being changed mid calculation
 			unordered_map<string, double> temp;
 			for (auto iter = outNodes.begin(); iter != outNodes.end(); iter++) {
 				string curr = iter->first;
@@ -59,6 +61,7 @@ public:
 				}
 				temp[curr] = sum;
 			}
+			// Moves everything from temp map to outNodes map
 			for (auto iter = temp.begin(); iter != temp.end(); iter++) {
 				outNodes[iter->first].first = iter->second;
 			}
@@ -70,7 +73,6 @@ public:
 	void print()
 	{
 		for (auto iter = outNodes.begin(); iter != outNodes.end(); iter++) {
-			//printf("%s %0.2f \n", iter->first, iter->second.first);
 			cout << setprecision(2) << fixed;
 			cout <<iter->first<<" "<<iter->second.first<< endl;
 		}
