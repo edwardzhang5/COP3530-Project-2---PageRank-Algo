@@ -56,15 +56,16 @@ public:
 				string curr = iter->first;
 				auto in = inNodes[curr];
 				double sum = 0;
-				for (int c = 0; c < in.size() ; c++) {
+				for (unsigned int c = 0; c < in.size() ; c++) {
 					sum += outNodes[in[c]].first * (1.00/outNodes[in[c]].second.size());
 				}
 				temp[curr] = sum;
 			}
-			// Moves everything from temp map to outNodes map
+			// Moves new weights from temp map to outNodes map
 			for (auto iter = temp.begin(); iter != temp.end(); iter++) {
 				outNodes[iter->first].first = iter->second;
 			}
+			temp.clear();
 		}
 
 
@@ -84,7 +85,7 @@ public:
 		for (auto iter = outNodes.begin(); iter != outNodes.end(); iter++) {
 			auto key = iter->second.second;
 			cout << iter->first << " |";
-			for (int i = 0; i < key.size(); i++){
+			for (unsigned int i = 0; i < key.size(); i++){
 				cout << " " << key[i];
 			}
 			cout << endl;
@@ -93,7 +94,7 @@ public:
 		for (auto iter = inNodes.begin(); iter != inNodes.end(); iter++) {
 			auto key = iter->second;
 			cout << iter->first << " |";
-			for (int i = 0; i < key.size(); i++) {
+			for (unsigned int i = 0; i < key.size(); i++) {
 				cout << " " << key[i];
 			}
 			cout << endl;
